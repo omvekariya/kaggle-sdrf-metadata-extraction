@@ -1,0 +1,38 @@
+# Configuration for Harmonizing the Data of your Data Competition
+
+# Data paths
+data:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  external_dir: "data/external"
+
+# Model configuration
+model:
+  name: "microsoft/BiomedNLP-PubMedBERT-base-uncased-abstract"
+  max_length: 512
+  num_classes: 2
+  dropout: 0.1
+
+# Training configuration
+training:
+  batch_size: 16
+  learning_rate: 2e-5
+  epochs: 10
+  warmup_steps: 500
+  weight_decay: 0.01
+  gradient_accumulation_steps: 1
+
+# LLM configuration (for extraction)
+llm:
+  model: "gpt-4"
+  temperature: 0.0
+  max_tokens: 1000
+
+# Logging
+logging:
+  level: "INFO"
+  save_dir: "logs"
+
+# Submission
+submission:
+  output_dir: "submissions"
