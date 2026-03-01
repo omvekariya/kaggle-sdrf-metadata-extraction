@@ -228,6 +228,9 @@ def create_submission(sample_submission: pd.DataFrame, predictions: dict) -> pd.
     """Create submission DataFrame from predictions."""
     submission = sample_submission.copy()
 
+    # Drop any unnamed columns (index artifacts)
+    submission = submission.loc[:, ~submission.columns.str.contains('^Unnamed')]
+
     # Get all metadata columns
     metadata_cols = [col for col in submission.columns
                     if col.startswith('Characteristics[') or
